@@ -1,6 +1,11 @@
 # docker_attack
 Docker for pentesting
 
+## fix python3.10-minimal installation error
+
+1. edit /var/snap/docker/current/config/daemon.json and replace "overlay2" with "vfs" for the storage-driver
+2. run sudo snap restart docker
+
 ## PACKAGE
 
 ### BASE
