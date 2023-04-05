@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  attack_env:
+    build:
+      context: "./"
+      dockerfile: "./dockerfile"
+      args:
+        USERNAME: ${USERNAME:-user}
+        USERPASS: ${USERPASS:-1234}
+        ROOTPASS: ${ROOTPASS:-1234}
+        PACKAGES: ${PACKAGES}
+        GIT_EMAIL: ${GIT_EMAIL}
+        GIT_NAME: ${GIT_NAME}
+    container_name: attack_env
+    environment:
+      - DISPLAY=${DISPLAY}
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    network_mode: "host"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - dir_00:/home/pix/Shared
+    hostname: "attack_env"
+
+volumes:
+  dir_00:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './Shared'
