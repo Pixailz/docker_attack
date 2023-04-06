@@ -15,40 +15,44 @@ Docker for pentesting
 - [x] git
 - [x] wget
 - [x] curl
-- [ ] ip
-- [ ] build-essential
+- [x] ip
+- [x] build-essential
+- [X] strings
+- [x] xxd
 - [ ] vscode
 
 ### WEB
 
 - [x] netcat
+- [x] socat
 - [x] tcpdump
 - [x] iperf3
 - [x] wireshark
 - [x] nmap
 - [ ] gobuster
-- [ ] burpsuite
+- [x] burpsuite
 
 ### WIFI
 
-- [ ] aircrack-ng
+- [x] aircrack-ng
 
 ### EXPLOITATION
 - [ ] metasploit
 
 ### HASHES
-- [ ] hashcat
-- [ ] john
+- [x] hashcat
+- [x] john
 
 ### REVERSE
-- [ ] gdb
+- [x] gdb
+- [ ] gef
 
 ### STEG
 - [ ] ciphey
 
 ### PROGRAMMATION
-- [ ] python3
-- [ ] python3-pip
-- [ ] python-is-python3
+- [x] python3
+- [x] python3-pip
+- [x] python-is-python3
 
 https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.2.4&type=Linux
