@@ -23,19 +23,19 @@ services:
       - DISPLAY=${DISPLAY}
       - TERM=xterm
     cap_add:
-      - NET_ADMIN
-      - NET_RAW
+      - NET_ADMIN     # for wireshark
+      - NET_RAW       #
     security_opt:
       - seccomp:unconfined #for chrome
     network_mode: "host"
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - user_home:/home/${USERNAME:-user}/
+      - /tmp/.X11-unix:/tmp/.X11-unix # for gui
+      - ./Shared/home:/home/${USERNAME:-user}/
 
-volumes:
-  user_home:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: './Shared/home/'
+# volumes:
+#   user_home:
+#     driver: local
+#     driver_opts:
+#       type: 'none'
+#       o: 'bind'
+#       device: './Shared/home/'
