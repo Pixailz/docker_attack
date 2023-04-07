@@ -1,9 +1,16 @@
 # docker_cybersec
 Docker for CyberSecurizing all the ting
 
+## HOWTO
+
+1. copy and paste [./.env.template](./.env.template) to .env
+2. make your own choice
+3. `make` the docker once (can take a while)
+4. enjoy
+
 ## TODO
 
-1. have the choice to choice modules
+1. have the choice to choose modules
 2. make the prompt according to the side you choose
    1. have red tool, make the prompt red
    2. have blue tool, make the prompt blue
@@ -46,19 +53,22 @@ Docker for CyberSecurizing all the ting
 |ip                |base          |🟢   |✅       |apt  |
 |strings           |base          |🔵   |✅       |apt  |
 |xxd               |base          |🔵   |✅       |apt  |
+|chrome            |base          |     |✅       |deb  |
 |                  |              |     |         |     |
 |build-essential   |prog          |🟢   |✅       |apt  |
 |python3           |prog          |🟢   |✅       |apt  |
 |python3-pip       |prog          |🟢   |✅       |apt  |
 |python-is-python3 |prog          |🟢   |✅       |apt  |
 |gdb               |prog          |🔵   |✅       |apt  |
-|vscode            |prog          |🟢   |❌       |curl |
+|gnome-terminal    |prog          |🟢   |✅       |apt  |
+|jdk-20            |prog          |     |✅       |deb  |
+|vscode            |prog          |🟢   |✅       |deb  |
 |                  |              |     |         |     |
 |nmap              |web           |🔴   |✅       |apt  |
 |netcat-openbsd    |web           |🔴   |✅       |apt  |
 |wireshark         |web           |🔴   |✅       |apt  |
 |gobuster          |web           |🔴   |❌       |apt  |
-|burpsuite         |web           |🔴   |✅       |curl |
+|burpsuite         |web           |🔴   |✅       |jar  |
 |net-tools         |web           |🟢   |✅       |apt  |
 |iperf3            |web           |🟢   |✅       |apt  |
 |tcpdump           |web           |🟢   |✅       |apt  |
@@ -73,10 +83,16 @@ Docker for CyberSecurizing all the ting
 |                  |              |     |         |     |
 |metasploit        |exploitation  |🔴   |❌       |curl |
 |                  |              |     |         |     |
-|gdb               |reverse       |🔵   |✅       |apt  |
 |gef               |reverse       |🔵   |❌       |apt  |
 |readelf           |reverse       |🔵   |✅       |apt  |
 |objdump           |reverse       |🔵   |✅       |apt  |
 |ghidra            |reverse       |🔵   |❌       |apt  |
 |                  |              |     |         |     |
 |ciphey            |steganohraphy |🔵   |❌       |git  |
+|binwalk           |steganohraphy |🔵   |✅       |apt  |
+|exiftool          |steganohraphy |🔵   |✅       |apt  |
+
+## BUILD TIME
+
+### 07/04/2023
+1.

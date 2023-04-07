@@ -10,7 +10,7 @@ else
 COMPOSE_TARGET		:= attack_env
 endif
 
-.PHONY:				build clean clean_docker run $(SHARE_DIR)
+.PHONY:				build clean clean_docker run # $(SHARE_DIR)
 
 run:				$(SHARE_DIR)
 	$(COMPOSE) run -it $(COMPOSE_TARGET)

@@ -12,7 +12,9 @@ services:
         ROOTPASS: ${ROOTPASS:-1234}
         PACKAGES: ${PACKAGES:-}
         LINK_CHROME: ${LINK_CHROME:-}
+        LINK_VSCODE: ${LINK_VSCODE:-}
         LINK_BURP: ${LINK_BURP:-}
+        LINK_JAVA: ${LINK_JAVA:-}
         SEC_LIST: ${SEC_LIST:-}
         GIT_EMAIL: ${GIT_EMAIL:-}
         GIT_NAME: ${GIT_NAME:-}
@@ -30,12 +32,12 @@ services:
     network_mode: "host"
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix # for gui
-      - ./Shared/home:/home/${USERNAME:-user}/
+      - user_home:/home/${USERNAME:-user}
 
-# volumes:
-#   user_home:
-#     driver: local
-#     driver_opts:
-#       type: 'none'
-#       o: 'bind'
-#       device: './Shared/home/'
+volumes:
+  user_home:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './Shared/home/'
