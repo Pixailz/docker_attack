@@ -1,58 +1,82 @@
-# docker_attack
-Docker for pentesting
+# docker_cybersec
+Docker for CyberSecurizing all the ting
 
-## fix python3.10-minimal installation error
+## TODO
 
-1. edit /var/snap/docker/current/config/daemon.json and replace "overlay2" with "vfs" for the storage-driver
-2. run sudo snap restart docker
+1. have the choice to choice modules
+2. make the prompt according to the side you choose
+   1. have red tool, make the prompt red
+   2. have blue tool, make the prompt blue
+   3. have both tool, make the prompt purple
+   4. etc
 
 ## PACKAGE
 
-### BASE
+- category
+  1. base
+  2. prog
+  3. web
+  4. crack
+  5. wifi
+  6. exploitation
+  7. reverse
+  8. steg
 
-- [x] vim
-- [x] tmux
-- [x] git
-- [x] wget
-- [x] curl
-- [x] ip
-- [x] build-essential
-- [X] strings
-- [x] xxd
-- [ ] vscode
+- team
+  1. 🔴 red: attack
+  2. 🔵 blue: defend
+  3. 🟢 green: build
 
-### WEB
+- available
+  1. ❌
+  2. ✅
 
-- [x] netcat
-- [x] socat
-- [x] tcpdump
-- [x] iperf3
-- [x] wireshark
-- [x] nmap
-- [ ] gobuster
-- [x] burpsuite
+- from:
+  1. apt
+  2. curl
+  3. git
 
-### WIFI
-
-- [x] aircrack-ng
-
-### EXPLOITATION
-- [ ] metasploit
-
-### HASHES
-- [x] hashcat
-- [x] john
-
-### REVERSE
-- [x] gdb
-- [ ] gef
-
-### STEG
-- [ ] ciphey
-
-### PROGRAMMATION
-- [x] python3
-- [x] python3-pip
-- [x] python-is-python3
-
-https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.2.4&type=Linux
+|name              |category      |team |available|from |
+|:--------------:  |:------------:|:---:|:-------:|:---:|
+|vim               |base          |🟢   |✅       |apt  |
+|tmux              |base          |🟢   |✅       |apt  |
+|git               |base          |🟢   |✅       |apt  |
+|wget              |base          |🔴   |✅       |apt  |
+|curl              |base          |🔴   |✅       |apt  |
+|ip                |base          |🟢   |✅       |apt  |
+|strings           |base          |🔵   |✅       |apt  |
+|xxd               |base          |🔵   |✅       |apt  |
+|                  |              |     |         |     |
+|build-essential   |prog          |🟢   |✅       |apt  |
+|python3           |prog          |🟢   |✅       |apt  |
+|python3-pip       |prog          |🟢   |✅       |apt  |
+|python-is-python3 |prog          |🟢   |✅       |apt  |
+|gdb               |prog          |🔵   |✅       |apt  |
+|vscode            |prog          |🟢   |❌       |curl |
+|                  |              |     |         |     |
+|nmap              |web           |🔴   |✅       |apt  |
+|netcat-openbsd    |web           |🔴   |✅       |apt  |
+|wireshark         |web           |🔴   |✅       |apt  |
+|gobuster          |web           |🔴   |❌       |apt  |
+|burpsuite         |web           |🔴   |✅       |curl |
+|net-tools         |web           |🟢   |✅       |apt  |
+|iperf3            |web           |🟢   |✅       |apt  |
+|tcpdump           |web           |🟢   |✅       |apt  |
+|iproute2          |web           |🟢   |✅       |apt  |
+|iputils-ping      |web           |🟢   |✅       |apt  |
+|                  |              |     |         |     |
+|hashcat           |crack         |🔴   |✅       |apt  |
+|john              |crack         |🔴   |✅       |apt  |
+|hydra             |crack         |🔴   |✅       |apt  |
+|                  |              |     |         |     |
+|aircrack-ng       |wifi          |🔴   |✅       |apt  |
+|                  |              |     |         |     |
+|metasploit        |exploitation  |🔴   |❌       |curl |
+|                  |              |     |         |     |
+|gdb               |reverse       |🔵   |✅       |apt  |
+|gef               |reverse       |🔵   |❌       |apt  |
+|readelf           |reverse       |🔵   |✅       |apt  |
+|objdump           |reverse       |🔵   |✅       |apt  |
+|ghidra            |reverse       |🔵   |❌       |apt  |
+|                  |              |     |         |     |
+|ciphey            |steganohraphy |🔵   |❌       |git  |
