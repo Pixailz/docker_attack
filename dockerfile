@@ -32,9 +32,9 @@ RUN		${CURL} https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.deb
 # Download BurpSuite
 RUN		${CURL} "${LINK_BURP}" --output /usr/bin/burp.jar
 
-# Download Seclists
-WORKDIR	/usr/share
-RUN		git clone https://github.com/danielmiessler/SecLists -o
+# # Download Seclists
+# WORKDIR	/usr/share
+# RUN		git clone https://github.com/danielmiessler/SecLists -o
 
 # Update pip
 RUN		pip install --upgrade pip
