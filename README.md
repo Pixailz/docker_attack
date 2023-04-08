@@ -94,5 +94,5 @@ Docker for CyberSecurizing all the ting
 
 ## BUILD TIME
 
-### 07/04/2023
-1.
+### 08/04/2023
+1. 687.9s

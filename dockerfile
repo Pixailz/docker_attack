@@ -31,10 +31,8 @@ RUN		${CURL} "${LINK_CHROME}" --output chrome.deb	  && \
 		${CURL} "${LINK_VSCODE}" --output vscode.deb	  && \
 		${CURL} "${LINK_BURP}" --output /usr/bin/burp.jar && \
 		${CURL} "${LINK_JAVA}" --output java.deb
-## Install file
-RUN		${APT_INST} ./chrome.deb ./vscode.deb ./java.deb
-## Remove tmp file
-RUN		rm -rf ./*
+## Install file and remove tmp file
+RUN		${APT_INST} ./chrome.deb ./vscode.deb ./java.deb && rm -rf ./*
 
 # # Download Seclists
 # WORKDIR	/usr/share/wordlists
@@ -43,17 +41,12 @@ RUN		rm -rf ./*
 # Configure wireshark
 RUN		setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
 
-WORKDIR	/home/${USERNAME}
 # Create User
-RUN		useradd -s /bin/bash ${USERNAME} -d /home/${USERNAME}
+RUN		useradd -s /bin/bash ${USERNAME} -m -d /home/${USERNAME}
 RUN		usermod -aG sudo ${USERNAME}
-# Copy some file
-COPY	--chown=${USERNAME}:${USERNAME} ./config/bash/.bashrc /home/${USERNAME}/.bashrc
 # Change password
 RUN		echo "root:${ROOTPASS}" | chpasswd
 RUN		echo "${USERNAME}:${USERPASS}" | chpasswd
-
-USER	${USERNAME}
 
 # Configure git
 RUN		git config --global user.email "${GIT_EMAIL}"
@@ -61,3 +54,9 @@ RUN		git config --global user.name "${GIT_NAME}"
 
 # Update pip
 RUN		pip install --upgrade pip
+
+USER	${USERNAME}
+WORKDIR	/home/${USERNAME}
+# Copy some file
+
+COPY	--chown=${USERNAME}:${USERNAME} ./config/bash/.bashrc /home/${USERNAME}/.bashrc
