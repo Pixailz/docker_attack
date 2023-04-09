@@ -27,7 +27,7 @@ clean_docker:
 	$(DOCKER) network prune -f
 	$(DOCKER) volume prune -f
 	$(DOCKER) system prune -af
-	$(RM) $(SHARED_DIR)
+	sudo $(RM) $(SHARE_DIR)
 
 re:			clean run
 

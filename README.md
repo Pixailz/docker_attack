@@ -33,6 +33,7 @@ Docker for CyberSecurizing all the ting
   1. 🔴 red: attack
   2. 🔵 blue: defend
   3. 🟢 green: build
+  4. ⚫ None: None
 
 - available
   1. ❌
@@ -53,7 +54,8 @@ Docker for CyberSecurizing all the ting
 |ip                |base          |🟢   |✅       |apt  |
 |strings           |base          |🔵   |✅       |apt  |
 |xxd               |base          |🔵   |✅       |apt  |
-|chrome            |base          |     |✅       |deb  |
+|file              |base          |🔵   |✅       |apt  |
+|chrome            |base          |⚫   |✅       |deb  |
 |                  |              |     |         |     |
 |build-essential   |prog          |🟢   |✅       |apt  |
 |python3           |prog          |🟢   |✅       |apt  |
@@ -61,13 +63,13 @@ Docker for CyberSecurizing all the ting
 |python-is-python3 |prog          |🟢   |✅       |apt  |
 |gdb               |prog          |🔵   |✅       |apt  |
 |gnome-terminal    |prog          |🟢   |✅       |apt  |
-|jdk-20            |prog          |     |✅       |deb  |
+|jdk-20            |prog          |🟢   |✅       |deb  |
 |vscode            |prog          |🟢   |✅       |deb  |
 |                  |              |     |         |     |
 |nmap              |web           |🔴   |✅       |apt  |
 |netcat-openbsd    |web           |🔴   |✅       |apt  |
 |wireshark         |web           |🔴   |✅       |apt  |
-|gobuster          |web           |🔴   |❌       |apt  |
+|gobuster          |web           |🔴   |✅       |git  |
 |burpsuite         |web           |🔴   |✅       |jar  |
 |net-tools         |web           |🟢   |✅       |apt  |
 |iperf3            |web           |🟢   |✅       |apt  |
@@ -80,19 +82,23 @@ Docker for CyberSecurizing all the ting
 |hydra             |crack         |🔴   |✅       |apt  |
 |                  |              |     |         |     |
 |aircrack-ng       |wifi          |🔴   |✅       |apt  |
+|wifite            |wifi          |🔴   |❌       |???  |
 |                  |              |     |         |     |
 |metasploit        |exploitation  |🔴   |❌       |curl |
 |                  |              |     |         |     |
-|gef               |reverse       |🔵   |❌       |apt  |
+|gef               |reverse       |🔵   |❌       |git  |
 |readelf           |reverse       |🔵   |✅       |apt  |
 |objdump           |reverse       |🔵   |✅       |apt  |
-|ghidra            |reverse       |🔵   |❌       |apt  |
+|ghidra            |reverse       |🔵   |✅       |git  |
+|r2                |reverse       |🔵   |✅       |git  |
 |                  |              |     |         |     |
 |ciphey            |steganohraphy |🔵   |❌       |git  |
 |binwalk           |steganohraphy |🔵   |✅       |apt  |
 |exiftool          |steganohraphy |🔵   |✅       |apt  |
 
-## BUILD TIME
+## SUCESSFULL BUILD TIME
 
-### 08/04/2023
-1. 687.9s
+|date      |time   |size  |stage|
+|:--------:|:-----:|:----:|:---:|
+|09/04/2023| 373.2s|5.17GB|15   |
+|09/04/2023| 602.4s|5.17GB|15   |

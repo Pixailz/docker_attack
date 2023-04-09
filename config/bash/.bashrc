@@ -116,5 +116,4 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-PATH="${PATH}:/usr/lib/jvm/jdk-20/bin/"
-alias burpsuite="/usr/lib/jvm/jdk-20/bin/java -jar -Xmx4g /usr/bin/burp.jar"
+
