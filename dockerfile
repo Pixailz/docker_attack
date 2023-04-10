@@ -49,9 +49,9 @@ RUN		tar -xzf golang.tar.gz -C /usr/local									&& \
 RUN		git clone https://github.com/OJ/gobuster.git /usr/bin/gobuster			&& \
 		make -C /usr/bin/gobuster
 
-# # Download Seclists
-# WORKDIR	/usr/share/wordlists
-# RUN		git clone "https://github.com/danielmiessler/SecLists"
+# Download Seclists
+WORKDIR	/usr/share/wordlists
+RUN		git clone "https://github.com/danielmiessler/SecLists"
 
 # Configure wireshark
 RUN		setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
@@ -71,11 +71,12 @@ RUN		git config --global user.email "${GIT_EMAIL}"							&& \
 # Update pip
 RUN		pip install --upgrade pip
 
-USER	${USERNAME}
-WORKDIR	/home/${USERNAME}
 ## Install radar2
 RUN		git clone https://github.com/radareorg/radare2 /usr/bin/radare2			&& \
-		/usr/bin/radare2/sys/install.sh && rm -r radare2
+		/usr/bin/radare2/sys/install.sh
+
+USER	${USERNAME}
+WORKDIR	/home/${USERNAME}
 
 # Copy some file
 COPY	--chown=${USERNAME}:${USERNAME} ./config/bash/ /home/${USERNAME}/
