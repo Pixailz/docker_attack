@@ -56,12 +56,12 @@ Docker for CyberSecurizing all the ting
 |xxd               |base          |🔵   |✅       |apt  |
 |file              |base          |🔵   |✅       |apt  |
 |chrome            |base          |⚫   |✅       |deb  |
+|syncthing         |base          |⚫   |✅       |deb  |
 |                  |              |     |         |     |
 |build-essential   |prog          |🟢   |✅       |apt  |
 |python3           |prog          |🟢   |✅       |apt  |
 |python3-pip       |prog          |🟢   |✅       |apt  |
 |python-is-python3 |prog          |🟢   |✅       |apt  |
-|gdb               |prog          |🔵   |✅       |apt  |
 |gnome-terminal    |prog          |🟢   |✅       |apt  |
 |jdk-20            |prog          |🟢   |✅       |deb  |
 |vscode            |prog          |🟢   |✅       |deb  |
@@ -86,13 +86,14 @@ Docker for CyberSecurizing all the ting
 |                  |              |     |         |     |
 |metasploit        |exploitation  |🔴   |❌       |curl |
 |                  |              |     |         |     |
-|gef               |reverse       |🔵   |❌       |git  |
+|gef               |reverse       |🔵   |✅       |wget |
+|gdb               |prog          |🔵   |✅       |apt  |
 |readelf           |reverse       |🔵   |✅       |apt  |
 |objdump           |reverse       |🔵   |✅       |apt  |
 |ghidra            |reverse       |🔵   |✅       |git  |
 |r2                |reverse       |🔵   |✅       |git  |
 |                  |              |     |         |     |
-|ciphey            |steganohraphy |🔵   |❌       |git  |
+|xortool           |steganohraphy |🔵   |❌       |pip  |
 |binwalk           |steganohraphy |🔵   |✅       |apt  |
 |exiftool          |steganohraphy |🔵   |✅       |apt  |
 
@@ -104,3 +105,5 @@ Docker for CyberSecurizing all the ting
 |09/04/2023| 602.4s|5.17GB|15   |
 |          |       |      |     |
 |10/04/2023| 524.7s| 9.8GB|17   |
+|          |       |      |     |
+|14/05/2023| 683.8s|10.2GB|19   |

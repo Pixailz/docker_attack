@@ -1,4 +1,4 @@
-FROM	ubuntu:22.10
+FROM	ubuntu:22.10 as base
 
 ARG		USERNAME																\
 		USERPASS																\
@@ -11,6 +11,7 @@ ARG		USERNAME																\
 		LINK_JAVA																\
 		LINK_GOLANG																\
 		LINK_GHIDRA																\
+		LINK_ARES																\
 		GIT_EMAIL																\
 		GIT_NAME																\
 		APT_INST="apt install -y"												\
@@ -29,8 +30,23 @@ RUN 	sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen	&& \
 		dpkg-reconfigure --frontend=noninteractive locales						&& \
 		update-locale LANG=en_US.UTF-8
 
+FROM	base as final
+
+# Update pip
+RUN		python3 -m pip install --upgrade pip setuptools							&& \
+		python3 -m pip install --upgrade pwn
+
+# Download Seclists
+WORKDIR	/usr/share/wordlists
+RUN		git clone "https://github.com/danielmiessler/SecLists"
+
+# Install gef
+RUN		wget -O ~/.gdbinit-gef.py -q https://gef.blah.cat/py					&& \
+		echo source ~/.gdbinit-gef.py >> ~/.gdbinit
+
 # make tmp dir
 WORKDIR	/tmp/downloads
+
 ## Downloads file
 RUN		${CURL} "${LINK_CHROME}" --output chrome.deb							&& \
 		${CURL} "${LINK_VSCODE}" --output vscode.deb							&& \
@@ -49,10 +65,6 @@ RUN		tar -xzf golang.tar.gz -C /usr/local									&& \
 RUN		git clone https://github.com/OJ/gobuster.git /usr/bin/gobuster			&& \
 		make -C /usr/bin/gobuster
 
-# Download Seclists
-WORKDIR	/usr/share/wordlists
-RUN		git clone "https://github.com/danielmiessler/SecLists"
-
 # Configure wireshark
 RUN		setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
 
@@ -68,15 +80,19 @@ RUN		echo "root:${ROOTPASS}" | chpasswd										&& \
 RUN		git config --global user.email "${GIT_EMAIL}"							&& \
 		git config --global user.name "${GIT_NAME}"
 
-# Update pip
-RUN		pip install --upgrade pip
-
-## Install radar2
+# Install radar2
 RUN		git clone https://github.com/radareorg/radare2 /usr/bin/radare2			&& \
 		/usr/bin/radare2/sys/install.sh
 
 USER	${USERNAME}
 WORKDIR	/home/${USERNAME}
 
+# install xortool
+RUN		curl -sSL https://install.python-poetry.org | python3 -					&& \
+		git clone https://github.com/hellman/xortool							&& \
+		cd ./xortool															&& \
+		/home/${USERNAME}/.local/bin/poetry build								&& \
+		python3 -m pip install --user dist/xortool*.whl
+
 # Copy some file
-COPY	--chown=${USERNAME}:${USERNAME} ./config/bash/ /home/${USERNAME}/
+COPY	--chown=${USERNAME}:${USERNAME} ./config/dot_files/ /home/${USERNAME}/

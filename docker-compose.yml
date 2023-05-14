@@ -6,6 +6,7 @@ services:
     build:
       context: "./"
       dockerfile: "./dockerfile"
+      target: "final"
       args:
         USERNAME: ${USERNAME:-user}
         USERPASS: ${USERPASS:-1234}
